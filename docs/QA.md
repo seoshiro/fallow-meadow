@@ -2,6 +2,8 @@
 
 2026-10-11. Environment: Windows, Node.js 24.18.0, local Chromium controlled by the host's Playwright 1.57 runtime. Browser tests use actual rendered DOM, keyboard, pointer, touchscreen, native downloads and localStorage. No source was uploaded to an outside review service.
 
+Final browser executable reports Chromium **153.0.8010.12**. A live asset check verified 17 static files byte-for-byte against the workspace; private screenshot/video paths returned HTTP 404. In-browser measurement of 24 clusters at day 120 averaged about 3.0 ms for the model and 4.4 ms for SVG markup over 25 iterations on this host.
+
 ## Audit 1 — product and composition
 
 The first screen exposes a working planted meadow and a clear seed/weather/season loop. Roots became the default to make the botanical cutaway the central moment. Text describes what to do and what changes. The preset studies, comparison and notebook retain the same visual language. The EN mobile headline was recomposed to keep “wild in.” together. Russian glyphs and line wrapping were visually inspected.
@@ -25,6 +27,8 @@ Local browser suite: zero console/page errors, no failed resources. A warm local
 ## Public verification
 
 Verified against **https://seoshiro.github.io/fallow-meadow/** on 2026-10-11: the complete public suite passed **50/50**, and the focused audit passed **30/30** (18 of those assertions are successive modal Tab presses). CI model tests/build and native Pages deployment succeeded. Public checks use isolated browser contexts and local downloads; they do not change any server data. Final exact release commit and CI run URLs are supplied with the handoff. A final screenshot review also removed stale-language toast text when switching EN/RU.
+
+A repeated suite exposed a test race: `setInputFiles` does not await the application's asynchronous `file.text()`. The import itself was independently verified live. The test now waits for the error text or modal closure before asserting; the earlier failed report is retained privately alongside the final successful report.
 
 ## Private artifacts and limits
 
