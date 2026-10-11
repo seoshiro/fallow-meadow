@@ -24,7 +24,7 @@ Local browser suite: zero console/page errors, no failed resources. A warm local
 
 ## Public verification
 
-The same complete suite and focused audit are run again against the published GitHub Pages URL after deployment. Final results, CI runs and exact release commit are supplied with the handoff. Public checks use isolated browser contexts and local downloads; they do not change any server data.
+Verified against **https://seoshiro.github.io/fallow-meadow/** on 2026-10-11: the complete public suite passed **50/50**, and the focused audit passed **30/30** (18 of those assertions are successive modal Tab presses). CI model tests/build and native Pages deployment succeeded. Public checks use isolated browser contexts and local downloads; they do not change any server data. Final exact release commit and CI run URLs are supplied with the handoff. A final screenshot review also removed stale-language toast text when switching EN/RU.
 
 ## Private artifacts and limits
 

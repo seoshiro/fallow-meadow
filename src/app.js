@@ -31,7 +31,7 @@ function exportJSON(p=plot){download(JSON.stringify({format:'fallow',version:1,p
 async function exportPNG(){try{const svg=exportSVG(plot,roots),url=URL.createObjectURL(new Blob([svg],{type:'image/svg+xml'}));const image=new Image();await new Promise((resolve,reject)=>{image.onload=resolve;image.onerror=reject;image.src=url});const canvas=document.createElement('canvas');canvas.width=1600;canvas.height=950;const ctx=canvas.getContext('2d');ctx.drawImage(image,0,0,1600,950);URL.revokeObjectURL(url);const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/png'));if(!blob)throw new Error('PNG unavailable');download(blob,'image/png','fallow-day-'+plot.day+'.png');}catch{toast(t('exportError'));}}
 async function importFile(file){try{if(!file||file.size>60000)throw new Error('File too large');const value=JSON.parse(await file.text());const next=validatePlot(value?.format==='fallow'?value.plot:value);snapshot();plot=next;closeModal();renderLanguage();persist();toast(t('imported'));}catch{const el=$('#import-error');if(el)el.textContent=t('importError');toast(t('importError'));}}
 document.addEventListener('click',async e=>{const b=e.target.closest('[data-action]');if(!b)return;const a=b.dataset.action;
- if(a==='language'){lang=lang==='en'?'ru':'en';renderLanguage();persist();}
+ if(a==='language'){clearTimeout(toastTimer);$('#toast').classList.remove('visible');lang=lang==='en'?'ru':'en';renderLanguage();persist();}
  else if(a==='seed'){selected=b.dataset.species;erase=false;renderSeeds();updateScene();}
  else if(a==='plant')plantAt(Number($('#plant-position').value));
  else if(a==='undo')undoLast();
