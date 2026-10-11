@@ -1,0 +1,5 @@
+dist/
+node_modules/
+qa-private/
+.DS_Store
+*.log

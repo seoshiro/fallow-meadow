@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#edf0e4">
+  <meta name="description" content="Sow a small meadow. Shape its weather. Watch a season unfold. FALLOW is a free, browser-local botanical playground by seoshiro.">
+  <meta property="og:title" content="FALLOW — A little wild, grown by you.">
+  <meta property="og:description" content="An interactive botanical playground. Six species, one small world, endless seasons.">
+  <meta property="og:type" content="website">
+  <title>FALLOW — A little wild, grown by you.</title>
+  <link rel="icon" type="image/svg+xml" href="./assets/mark.svg">
+  <link rel="stylesheet" href="./src/styles.css">
+  <script type="module" src="./src/app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#workspace">Skip to meadow</a>
+  <header class="site-header">
+    <a href="./" class="brand" aria-label="FALLOW home"><img src="./assets/mark.svg" width="32" height="32" alt=""><span>FALLOW<span class="brand-dot">*</span></span></a>
+    <span class="header-caption" data-i18n="caption">A small world, grown by you.</span>
+    <nav aria-label="Main navigation"><button class="text-button" data-action="guide" data-i18n="guide">Field guide</button><button class="text-button" data-action="notebook" data-i18n="notebook">Notebook <span class="notebook-count">0</span></button><button class="language-button" data-action="language" aria-label="Switch to Russian">RU</button></nav>
+  </header>
+  <main>
+    <section class="intro" aria-labelledby="intro-title">
+      <div><div class="eyebrow"><span class="live-dot"></span><span data-i18n="eyebrow">THE ART OF LETTING THINGS GROW</span></div><h1 id="intro-title" data-i18n="headline">Let a little <span class="wild-phrase"><em>wild</em> in.</span></h1></div>
+      <div class="intro-aside"><p data-i18n="intro">Six kinds of seed. A little rain. A season to see what happens.</p><a href="#workspace" class="intro-link"><span data-i18n="invite">Your meadow is waiting</span><span aria-hidden="true">↙</span></a></div>
+    </section>
+    <section id="workspace" class="workspace" aria-label="Meadow playground">
+      <div class="meadow-panel">
+        <div class="scene-top"><div><span class="eyebrow" data-i18n="plotLabel">LIVING STUDY / 001</span><h2 id="plot-title">The open meadow</h2></div><div class="scene-views" aria-label="Scene display"><button data-action="roots" aria-pressed="false"><span class="root-icon" aria-hidden="true">⋔</span><span data-i18n="roots">Roots</span></button><button data-action="motion" aria-pressed="false"><span aria-hidden="true">≈</span><span data-i18n="wind">Wind</span></button></div></div>
+        <div class="scene-wrap" id="scene-wrap"><svg id="meadow" viewBox="0 0 1000 540" role="img" aria-label="Procedurally drawn meadow"></svg><div class="scene-empty" hidden><span class="empty-sprout">↟</span><p data-i18n="empty">Every meadow starts with a seed.</p><span data-i18n="emptyHint">Choose a packet below, then tap the soil.</span></div><div class="scene-instruction"><span class="instruction-dot"></span><span id="scene-instruction"></span></div><div class="scene-signature" aria-hidden="true">F. / <span id="scene-season">SUMMER</span></div></div>
+        <div class="plot-access"><label for="plant-position" data-i18n="position">Planting position</label><select id="plant-position" aria-label="Planting position"></select><button class="small-button" data-action="plant" data-i18n="plant">Sow seed</button><button class="small-button" data-action="undo" data-i18n="undo">Undo</button></div>
+        <div class="timeline"><button class="play-button" data-action="play" aria-label="Play season"><svg width="15" height="15" viewBox="0 0 20 20" aria-hidden="true"><path fill="currentColor" d="M5 3l12 7-12 7z"/></svg></button><div class="time-readout"><span data-i18n="day">DAY</span><strong id="day-number">45</strong></div><div class="timeline-track"><label class="sr-only" for="day-slider" data-i18n="timelineLabel">Day of the season</label><input id="day-slider" type="range" min="0" max="120" step="1" value="45"><div class="timeline-labels"><span data-i18n="spring">SPRING</span><span data-i18n="summer">SUMMER</span><span data-i18n="autumn">AUTUMN</span></div></div><button class="text-button season-end" data-action="end"><span data-i18n="end">Day 120</span><span aria-hidden="true">↗</span></button></div>
+      </div>
+      <aside class="conditions" aria-labelledby="conditions-title">
+        <div class="eyebrow" data-i18n="conditionsEyebrow">MAKE ROOM FOR CHANCE</div><h2 id="conditions-title" data-i18n="conditions">Set the conditions.</h2><p class="conditions-copy" data-i18n="conditionsCopy">Change the weather. The same seeds tell a different story.</p>
+        <div class="weather-control rain-control"><div class="control-label"><label for="rain-slider"><span aria-hidden="true">◒</span><span data-i18n="rain">Rainfall</span></label><output id="rain-output" for="rain-slider">55%</output></div><input id="rain-slider" type="range" min="0" max="100" step="1" value="55"><div class="range-captions"><span data-i18n="dry">DRY</span><span data-i18n="wet">WET</span></div></div>
+        <div class="weather-control sun-control"><div class="control-label"><label for="light-slider"><span aria-hidden="true">☼</span><span data-i18n="sun">Sunlight</span></label><output id="light-output" for="light-slider">70%</output></div><input id="light-slider" type="range" min="0" max="100" step="1" value="70"><div class="range-captions"><span data-i18n="shade">SHADE</span><span data-i18n="fullSun">FULL SUN</span></div></div>
+        <div class="meadow-stats"><div><strong id="species-count">6</strong><span data-i18n="species">species</span></div><div><strong id="bloom-count">0</strong><span data-i18n="inBloom">in bloom</span></div><div><strong id="vitality">0%</strong><span data-i18n="vitality">vitality</span></div></div>
+        <p class="field-observation" id="observation"></p>
+        <button class="primary-button" data-action="save"><span data-i18n="save">Keep this meadow</span><span aria-hidden="true">↗</span></button><button class="compare-button" data-action="compare"><span data-i18n="compare">Try a different climate</span><span aria-hidden="true">⇄</span></button>
+        <div class="local-note"><span class="live-dot"></span><span id="storage-note" data-i18n="local">Growing locally. Saved on this device.</span></div>
+      </aside>
+      <section class="seed-shelf" aria-labelledby="seed-title"><div class="shelf-heading"><div><span class="eyebrow" data-i18n="collection">THE SEED COLLECTION</span><h2 id="seed-title" data-i18n="seedTitle">Small beginnings.</h2></div><p data-i18n="shelfHint">Choose a seed. Tap the meadow to plant.</p><button class="text-button" data-action="erase" aria-pressed="false"><span aria-hidden="true">⌫</span><span data-i18n="remove">Remove</span></button></div><div id="seed-packets" class="seed-packets"></div></section>
+    </section>
+    <section class="experiments" aria-labelledby="experiments-title"><div class="experiments-intro"><span class="eyebrow" data-i18n="experimentsEyebrow">A CHANGE OF SCENERY</span><h2 id="experiments-title" data-i18n="experimentsTitle">Every season<br>has a story.</h2><p data-i18n="experimentsCopy">Start with a planted study, or make a little space of your own. Nothing grows exactly the same way.</p></div><div class="experiment-list" id="experiment-list"></div></section>
+    <section class="closing"><div class="closing-flower" aria-hidden="true">✳</div><p data-i18n="closing">A place to slow down.<br>A reason to look closer.</p><div class="closing-caption"><span data-i18n="modelNote">An artistic growth model, not gardening advice.</span><button class="text-button" data-action="guide" data-i18n="how">How this world works ↗</button></div></section>
+  </main>
+  <footer><span>FALLOW © <span id="year">2026</span> <a href="https://github.com/seoshiro" target="_blank" rel="noopener">seoshiro</a></span><span data-i18n="footer">NO ACCOUNTS. NO COST. JUST A LITTLE WILD.</span><a href="https://github.com/seoshiro/fallow-meadow" target="_blank" rel="noopener" data-i18n="source">Source ↗</a></footer>
+  <dialog id="modal" aria-labelledby="modal-title"><div class="modal-header"><span class="eyebrow">FALLOW / <span id="modal-label"></span></span><button class="icon-button" data-action="close" aria-label="Close dialog">×</button></div><div id="modal-content"></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <noscript><div class="noscript">FALLOW needs JavaScript to grow a meadow. Enable it and reload; all processing stays on your device.</div></noscript>
+</body>
+</html>
